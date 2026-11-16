@@ -10,10 +10,10 @@ namespace Config
     static const float BACKGROUND_RED = 0.94f;
     static const float BACKGROUND_GREEN = 0.96f;
     static const float BACKGROUND_BLUE = 1.0f;
-    static const int PLAYER_WIDTH = 38;
-    static const int PLAYER_HEIGHT = 34;
+    static const int PLAYER_WIDTH = 52;
+    static const int PLAYER_HEIGHT = 52;
     static const int ENEMY_RADIUS = 12;
-    static const int PROJECTILE_WIDTH = 5;
+    static const int PROJECTILE_WIDTH = 6;
     static const int PROJECTILE_HEIGHT = 14;
     static const float PLAYER_SPEED = 240.0f;
     static const float PROJECTILE_SPEED = 430.0f;

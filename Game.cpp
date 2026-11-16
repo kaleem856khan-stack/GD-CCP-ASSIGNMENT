@@ -21,7 +21,7 @@ void Game::Run(int argc, char** argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
     glutInitWindowPosition(200, 100);
-    glutCreateWindow("SpiderGame - Web Defender");
+    glutCreateWindow("Jet Fighter - Sky Defender");
     glClearColor(Config::BACKGROUND_RED, Config::BACKGROUND_GREEN, Config::BACKGROUND_BLUE, 1.0f);
     glDisable(GL_DEPTH_TEST);
     glutDisplayFunc(DisplayCallback);

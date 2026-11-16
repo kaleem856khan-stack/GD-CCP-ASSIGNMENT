@@ -1,17 +1,17 @@
-SpiderGame - Visual Studio 2013 / v120 / C++11
+Jet Fighter - Visual Studio 2013 / v120 / C++11
 ================================================
 
 Framework
 ---------
 This game follows the supplied skeleton's 2D OpenGL and GLUT callback design.
-The spider and enemies are animated with immediate-mode OpenGL shapes, so the
-project does not depend on the sample bitmap or its old image loader.
+The fighter jet and enemies are animated with immediate-mode OpenGL shapes, so
+the project does not depend on external sprite images.
 
 Files
 -----
 Config.h                 Window, movement and gameplay settings
-Player.h / Player.cpp    Spider movement, animation and firing cooldown
-Projectile.h / .cpp      Web projectile movement and drawing
+Player.h / Player.cpp    Jet movement, animation and firing cooldown
+Projectile.h / .cpp      Cannon round movement and drawing
 Enemy.h / Enemy.cpp      Chasing enemies and animation
 Game.h / Game.cpp        GLUT callbacks, timer, collisions, score and lives
 main.cpp                 Program entry point
@@ -30,10 +30,10 @@ Build in Visual Studio 2013
 
 Controls
 --------
-Left / Right arrows: move the spider
-Space or Up arrow:   shoot webs (hold to fire at the cooldown rate)
+Left / Right arrows: move the fighter jet
+Space or Up arrow:   fire cannon rounds (hold to fire at the cooldown rate)
 R:                   restart after game over
 Escape:              quit
 
-Each bug caught is worth 10 points. Bugs that hit the spider or pass the
+Each bug caught is worth 10 points. Bugs that hit the jet or pass the
 bottom edge cost one life. The game ends at zero lives.

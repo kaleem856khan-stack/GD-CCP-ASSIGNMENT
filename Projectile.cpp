@@ -17,17 +17,18 @@ void Projectile::Update(float elapsedSeconds)
 void Projectile::Draw() const
 {
     if (!active_) return;
-    glColor3f(0.25f, 0.72f, 0.92f);
-    glBegin(GL_QUADS);
-    glVertex2f(x_ - GetHalfWidth(), y_ - GetHalfHeight());
-    glVertex2f(x_ + GetHalfWidth(), y_ - GetHalfHeight());
-    glVertex2f(x_ + GetHalfWidth(), y_ + GetHalfHeight());
-    glVertex2f(x_ - GetHalfWidth(), y_ + GetHalfHeight());
-    glEnd();
-    glColor3f(0.78f, 0.93f, 1.0f);
-    glBegin(GL_LINES);
-    glVertex2f(x_, y_ - GetHalfHeight());
+    glColor3f(1.0f, 0.58f, 0.08f);
+    glBegin(GL_TRIANGLES);
     glVertex2f(x_, y_ + GetHalfHeight());
+    glVertex2f(x_ - GetHalfWidth(), y_);
+    glVertex2f(x_ + GetHalfWidth(), y_);
+    glEnd();
+    glColor3f(0.96f, 0.78f, 0.25f);
+    glBegin(GL_QUADS);
+    glVertex2f(x_ - GetHalfWidth(), y_);
+    glVertex2f(x_ + GetHalfWidth(), y_);
+    glVertex2f(x_ + GetHalfWidth() * 0.7f, y_ - GetHalfHeight());
+    glVertex2f(x_ - GetHalfWidth() * 0.7f, y_ - GetHalfHeight());
     glEnd();
 }
 

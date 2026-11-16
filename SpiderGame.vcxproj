@@ -12,8 +12,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"><OutDir>$(ProjectDir)Debug\</OutDir><IntDir>$(ProjectDir)Debug\obj\</IntDir></PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"><OutDir>$(ProjectDir)Release\</OutDir><IntDir>$(ProjectDir)Release\obj\</IntDir></PropertyGroup>
   <ItemDefinitionGroup>
-    <ClCompile><WarningLevel>Level3</WarningLevel><Optimization Condition="'$(Configuration)'=='Release'">MaxSpeed</Optimization><PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
-    <Link><SubSystem>Console</SubSystem><TargetMachine>MachineX86</TargetMachine><AdditionalDependencies>glut32.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies></Link>
+    <ClCompile><WarningLevel>Level3</WarningLevel><Optimization Condition="'$(Configuration)'=='Debug'">Disabled</Optimization><Optimization Condition="'$(Configuration)'=='Release'">MaxSpeed</Optimization><DebugInformationFormat Condition="'$(Configuration)'=='Debug'">ProgramDatabase</DebugInformationFormat><PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions></ClCompile>
+    <Link><SubSystem>Console</SubSystem><TargetMachine>MachineX86</TargetMachine><GenerateDebugInformation Condition="'$(Configuration)'=='Debug'">true</GenerateDebugInformation><ProgramDatabaseFile>$(OutDir)SpiderGame.pdb</ProgramDatabaseFile><AdditionalDependencies>glut32.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies></Link>
   </ItemDefinitionGroup>
   <ItemGroup><ClCompile Include="main.cpp" /><ClCompile Include="Game.cpp" /><ClCompile Include="Player.cpp" /><ClCompile Include="Projectile.cpp" /><ClCompile Include="Enemy.cpp" /></ItemGroup>
   <ItemGroup><ClInclude Include="Config.h" /><ClInclude Include="Game.h" /><ClInclude Include="Player.h" /><ClInclude Include="Projectile.h" /><ClInclude Include="Enemy.h" /></ItemGroup>

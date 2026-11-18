@@ -5,7 +5,7 @@ class Enemy
 {
 public:
     Enemy(float x, float y, float speed);
-    void Update(float elapsedSeconds, float targetX, float targetY);
+    void Update(float elapsedSeconds);
     void Draw() const;
     bool IsActive() const;
     void Deactivate();
@@ -18,6 +18,9 @@ private:
     float y_;
     float speed_;
     float animationTime_;
+    float velocityX_;
+    float velocityY_;
+    float turnTimer_;
     bool active_;
 };
 

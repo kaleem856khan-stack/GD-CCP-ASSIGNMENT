@@ -57,7 +57,7 @@ void Game::Display()
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glColor3f(0.82f, 0.87f, 0.94f);
+    glColor3f(0.35f, 0.38f, 0.43f);
     glBegin(GL_LINES);
     glVertex2f(Config::WORLD_LEFT, Config::WORLD_BOTTOM + 18.0f);
     glVertex2f(Config::WORLD_RIGHT, Config::WORLD_BOTTOM + 18.0f);
@@ -68,7 +68,7 @@ void Game::Display()
     for (std::vector<Enemy>::const_iterator enemy = enemies_.begin(); enemy != enemies_.end(); ++enemy) enemy->Draw();
     char status[80];
     sprintf_s(status, "Score: %d     Lives: %d", score_, lives_);
-    glColor3f(0.12f, 0.15f, 0.22f);
+    glColor3f(0.92f, 0.94f, 1.0f);
     DrawText(Config::WORLD_LEFT + 12.0f, Config::WORLD_TOP - 22.0f, status);
     DrawText(Config::WORLD_LEFT + 12.0f, Config::WORLD_BOTTOM + 8.0f,
              "Move: Left/Right arrows     Fire: Space or Up");
@@ -97,7 +97,7 @@ void Game::Update()
             SpawnEnemy();
         }
         for (std::vector<Enemy>::iterator enemy = enemies_.begin(); enemy != enemies_.end(); ++enemy)
-            enemy->Update(elapsed, player_.GetX(), player_.GetY());
+            enemy->Update(elapsed);
         CheckCollisions();
     }
     glutPostRedisplay();

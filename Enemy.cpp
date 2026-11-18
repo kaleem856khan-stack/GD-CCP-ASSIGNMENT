@@ -3,21 +3,52 @@
 #include <GL/glut.h>
 #include <cmath>
 
-Enemy::Enemy(float x, float y, float speed)
-    : x_(x), y_(y), speed_(speed), animationTime_(0.0f), active_(true)
+static float RandomUnit()
 {
+    static unsigned int state = 2463534242u;
+    state = state * 1664525u + 1013904223u;
+    return (float)(state >> 8) / 16777215.0f;
 }
 
-void Enemy::Update(float elapsedSeconds, float targetX, float targetY)
+Enemy::Enemy(float x, float y, float speed)
+    : x_(x), y_(y), speed_(speed), animationTime_(0.0f),
+      velocityX_(0.0f), velocityY_(0.0f), turnTimer_(0.0f), active_(true)
+{
+    float angle = RandomUnit() * 6.2831853f;
+    velocityX_ = (float)std::cos(angle) * speed_;
+    velocityY_ = (float)std::sin(angle) * speed_;
+    turnTimer_ = 0.35f + RandomUnit() * 1.1f;
+}
+
+void Enemy::Update(float elapsedSeconds)
 {
     if (!active_) return;
-    float dx = targetX - x_;
-    float dy = targetY - y_;
-    float length = (float)std::sqrt(dx * dx + dy * dy);
-    if (length > 0.001f)
+    turnTimer_ -= elapsedSeconds;
+    if (turnTimer_ <= 0.0f)
     {
-        x_ += dx / length * speed_ * elapsedSeconds;
-        y_ += dy / length * speed_ * elapsedSeconds;
+        float angle = RandomUnit() * 2.0943951f - 1.0471976f;
+        float oldX = velocityX_;
+        float oldY = velocityY_;
+        velocityX_ = (oldX * (float)std::cos(angle) - oldY * (float)std::sin(angle));
+        velocityY_ = (oldX * (float)std::sin(angle) + oldY * (float)std::cos(angle));
+        turnTimer_ = 0.35f + RandomUnit() * 1.1f;
+    }
+    x_ += velocityX_ * elapsedSeconds;
+    y_ += velocityY_ * elapsedSeconds;
+    if (x_ < Config::WORLD_LEFT + GetRadius())
+    {
+        x_ = Config::WORLD_LEFT + GetRadius();
+        velocityX_ = (float)std::fabs(velocityX_);
+    }
+    else if (x_ > Config::WORLD_RIGHT - GetRadius())
+    {
+        x_ = Config::WORLD_RIGHT - GetRadius();
+        velocityX_ = -(float)std::fabs(velocityX_);
+    }
+    if (y_ > Config::WORLD_TOP - GetRadius())
+    {
+        y_ = Config::WORLD_TOP - GetRadius();
+        velocityY_ = -(float)std::fabs(velocityY_);
     }
     animationTime_ += elapsedSeconds;
 }

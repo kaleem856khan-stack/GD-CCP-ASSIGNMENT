@@ -7,9 +7,9 @@ namespace Config
     static const int SCREEN_HEIGHT = 400;
     static const int TIMER_INTERVAL_MS = 16;
     static const int INITIAL_LIVES = 3;
-    static const float BACKGROUND_RED = 0.94f;
-    static const float BACKGROUND_GREEN = 0.96f;
-    static const float BACKGROUND_BLUE = 1.0f;
+    static const float BACKGROUND_RED = 0.0f;
+    static const float BACKGROUND_GREEN = 0.0f;
+    static const float BACKGROUND_BLUE = 0.0f;
     static const int PLAYER_WIDTH = 44;
     static const int PLAYER_HEIGHT = 44;
     static const int ENEMY_RADIUS = 14;

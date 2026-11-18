@@ -51,7 +51,7 @@ void Player::Draw() const
     const float swing = (movingLeft_ || movingRight_) ? 5.0f : 2.0f;
     glPushMatrix();
     glTranslatef(x_, y_, 0.0f);
-    glColor3f(0.08f, 0.08f, 0.11f);
+    glColor3f(0.63f, 0.48f, 0.82f);
     glLineWidth(2.0f);
     glBegin(GL_LINES);
     glVertex2f(-7.0f, 7.0f); glVertex2f(-18.0f, 15.0f + swing * (float)std::sin(phase));
@@ -63,7 +63,7 @@ void Player::Draw() const
     glVertex2f(10.0f, -3.0f); glVertex2f(19.0f, -8.0f - swing * (float)std::sin(phase));
     glVertex2f(6.0f, -8.0f); glVertex2f(13.0f, -17.0f + swing * (float)std::sin(phase));
     glEnd();
-    glColor3f(0.12f, 0.13f, 0.18f);
+    glColor3f(0.28f, 0.16f, 0.42f);
     glBegin(GL_TRIANGLE_FAN);
     glVertex2f(0.0f, -4.0f);
     for (int i = 0; i <= 24; ++i)
@@ -72,7 +72,7 @@ void Player::Draw() const
         glVertex2f((float)std::cos(angle) * 9.0f, -4.0f + (float)std::sin(angle) * 12.0f);
     }
     glEnd();
-    glColor3f(0.2f, 0.21f, 0.26f);
+    glColor3f(0.48f, 0.34f, 0.64f);
     glBegin(GL_TRIANGLE_FAN);
     glVertex2f(0.0f, 5.0f);
     for (int i = 0; i <= 20; ++i)
@@ -81,7 +81,7 @@ void Player::Draw() const
         glVertex2f((float)std::cos(angle) * 6.0f, 5.0f + (float)std::sin(angle) * 7.0f);
     }
     glEnd();
-    glColor3f(0.16f, 0.17f, 0.22f);
+    glColor3f(0.42f, 0.28f, 0.58f);
     glBegin(GL_TRIANGLE_FAN);
     glVertex2f(0.0f, 15.0f);
     for (int i = 0; i <= 20; ++i)

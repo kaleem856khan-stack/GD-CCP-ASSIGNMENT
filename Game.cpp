@@ -21,7 +21,7 @@ void Game::Run(int argc, char** argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
     glutInitWindowPosition(200, 100);
-    glutCreateWindow("Jet Fighter - Sky Defender");
+    glutCreateWindow("SpiderGame - Spider vs Honey Bees");
     glClearColor(Config::BACKGROUND_RED, Config::BACKGROUND_GREEN, Config::BACKGROUND_BLUE, 1.0f);
     glDisable(GL_DEPTH_TEST);
     glutDisplayFunc(DisplayCallback);
@@ -172,7 +172,7 @@ void Game::CheckCollisions()
         for (std::vector<Enemy>::iterator enemy = enemies_.begin(); enemy != enemies_.end(); ++enemy)
         {
             if (!enemy->IsActive()) continue;
-            if (CirclesOverlap(shot->GetX(), shot->GetY(), 5.0f,
+            if (CirclesOverlap(shot->GetX(), shot->GetY(), 7.0f,
                                enemy->GetX(), enemy->GetY(), enemy->GetRadius()))
             {
                 shot->Deactivate();
@@ -185,7 +185,7 @@ void Game::CheckCollisions()
     for (std::vector<Enemy>::iterator enemy = enemies_.begin(); enemy != enemies_.end(); ++enemy)
     {
         if (!enemy->IsActive()) continue;
-        if (CirclesOverlap(player_.GetX(), player_.GetY(), 12.0f,
+        if (CirclesOverlap(player_.GetX(), player_.GetY(), 15.0f,
                            enemy->GetX(), enemy->GetY(), enemy->GetRadius()))
         {
             enemy->Deactivate();

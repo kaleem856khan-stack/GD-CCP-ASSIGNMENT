@@ -1,6 +1,7 @@
 #include "Projectile.h"
 #include "Config.h"
 #include <GL/glut.h>
+#include <cmath>
 
 Projectile::Projectile(float x, float y, float velocityY)
     : x_(x), y_(y), velocityY_(velocityY), active_(true)
@@ -17,18 +18,30 @@ void Projectile::Update(float elapsedSeconds)
 void Projectile::Draw() const
 {
     if (!active_) return;
-    glColor3f(1.0f, 0.58f, 0.08f);
-    glBegin(GL_TRIANGLES);
-    glVertex2f(x_, y_ + GetHalfHeight());
-    glVertex2f(x_ - GetHalfWidth(), y_);
-    glVertex2f(x_ + GetHalfWidth(), y_);
+    glColor3f(0.48f, 0.78f, 0.9f);
+    glLineWidth(1.5f);
+    glBegin(GL_LINES);
+    for (int i = 0; i < 8; ++i)
+    {
+        float angle = (float)i * 6.2831853f / 8.0f;
+        glVertex2f(x_, y_);
+        glVertex2f(x_ + (float)std::cos(angle) * GetHalfWidth(),
+                   y_ + (float)std::sin(angle) * GetHalfHeight());
+    }
     glEnd();
-    glColor3f(0.96f, 0.78f, 0.25f);
-    glBegin(GL_QUADS);
-    glVertex2f(x_ - GetHalfWidth(), y_);
-    glVertex2f(x_ + GetHalfWidth(), y_);
-    glVertex2f(x_ + GetHalfWidth() * 0.7f, y_ - GetHalfHeight());
-    glVertex2f(x_ - GetHalfWidth() * 0.7f, y_ - GetHalfHeight());
+    glBegin(GL_LINE_LOOP);
+    for (int i = 0; i < 8; ++i)
+    {
+        float angle = (float)i * 6.2831853f / 8.0f;
+        glVertex2f(x_ + (float)std::cos(angle) * GetHalfWidth(),
+                   y_ + (float)std::sin(angle) * GetHalfHeight());
+    }
+    glEnd();
+    glBegin(GL_LINES);
+    glVertex2f(x_ - GetHalfWidth() * 0.5f, y_ - GetHalfHeight() * 0.5f);
+    glVertex2f(x_ + GetHalfWidth() * 0.5f, y_ + GetHalfHeight() * 0.5f);
+    glVertex2f(x_ + GetHalfWidth() * 0.5f, y_ - GetHalfHeight() * 0.5f);
+    glVertex2f(x_ - GetHalfWidth() * 0.5f, y_ + GetHalfHeight() * 0.5f);
     glEnd();
 }
 
